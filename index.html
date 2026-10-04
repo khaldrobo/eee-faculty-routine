@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EEE Faculty Routine Preference Form</title>
+  <meta name="description" content="EEE Department Faculty Class Routine Preference Form">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="page">
+    <header class="header">
+      <div class="header-badge">EEE DEPARTMENT</div>
+      <h1>Faculty Class Routine Preference Form</h1>
+      <p>Please select your preferred time slots for theory and, where applicable, laboratory courses.</p>
+    </header>
+
+    <form id="routineForm" novalidate>
+      <section class="card">
+        <div class="section-heading">
+          <span class="section-number">1</span>
+          <div><h2>Designation</h2><p>Please select your designation.</p></div>
+        </div>
+        <label class="field-label" for="designation">Designation <span class="required">*</span></label>
+        <select id="designation" name="designation" required>
+          <option value="">Select designation</option>
+          <option value="Professor">Professor</option>
+          <option value="Assistant Professor">Assistant Professor</option>
+          <option value="Lecturer">Lecturer</option>
+          <option value="Junior Lecturer">Junior Lecturer</option>
+        </select>
+        <div class="field-error" id="designationError"></div>
+      </section>
+
+      <section class="card">
+        <div class="section-heading">
+          <span class="section-number">2</span>
+          <div><h2>Name</h2><p>Your name will appear based on the selected designation.</p></div>
+        </div>
+        <label class="field-label" for="facultyName">Name <span class="required">*</span></label>
+        <select id="facultyName" name="facultyName" required disabled>
+          <option value="">Select designation first</option>
+        </select>
+        <div class="field-error" id="facultyNameError"></div>
+      </section>
+
+      <section class="card">
+        <div class="section-heading">
+          <span class="section-number">3</span>
+          <div><h2>Theory Course Routine</h2><p>Please choose suitable time slots for your theory courses.</p></div>
+        </div>
+
+        <div class="notice">
+          <strong>Requirement:</strong> Please select at least <strong>6</strong> suitable theory-course time slots.
+        </div>
+
+        <div class="selection-status">
+          <span>Theory slots selected</span>
+          <strong><span id="theoryCount">0</span> / 6</strong>
+        </div>
+
+        <div class="table-scroll">
+          <table class="routine-grid" id="theoryGrid">
+            <thead>
+              <tr>
+                <th class="day-header">Day</th>
+                <th>8:00–9:15</th>
+                <th>9:15–10:30</th>
+                <th>10:30–11:45</th>
+                <th>11:45–1:00</th>
+                <th>2:30–3:45</th>
+                <th>3:45–5:00</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+        <div class="field-error" id="theoryError"></div>
+      </section>
+
+      <section class="card" id="labSection">
+        <div class="section-heading">
+          <span class="section-number">4</span>
+          <div><h2>Laboratory Course Routine</h2><p>Please choose suitable time slots for your laboratory courses.</p></div>
+        </div>
+
+        <div class="notice">
+          <strong>Requirements:</strong>
+          <ul>
+            <li>Select at least <strong>6</strong> laboratory time slots.</li>
+            <li>Your selection must include at least <strong>one slot from Column 1</strong> and at least <strong>one slot from Column 3</strong>.</li>
+          </ul>
+        </div>
+
+        <div class="lab-rules">
+          <div><span>Column 1</span><strong id="labCol1Count">0</strong> selected</div>
+          <div><span>Column 2</span><strong id="labCol2Count">0</strong> selected</div>
+          <div><span>Column 3</span><strong id="labCol3Count">0</strong> selected</div>
+        </div>
+
+        <div class="selection-status">
+          <span>Laboratory slots selected</span>
+          <strong><span id="labCount">0</span> / 6</strong>
+        </div>
+
+        <div class="table-scroll">
+          <table class="routine-grid lab-grid" id="labGrid">
+            <thead>
+              <tr>
+                <th class="day-header">Day</th>
+                <th>8:00–10:30</th>
+                <th>10:30–1:00</th>
+                <th>2:30–5:00</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+        <div class="field-error" id="labError"></div>
+      </section>
+
+      <section class="card">
+        <div class="section-heading">
+          <span class="section-number">5</span>
+          <div><h2>Comments</h2><p>Please provide any additional comments or information, if applicable.</p></div>
+        </div>
+        <label class="field-label" for="comments">Comments <span class="optional">(Optional)</span></label>
+        <textarea id="comments" name="comments" rows="5" maxlength="1000"
+          placeholder="Enter any additional comments or preferences..."></textarea>
+        <div class="character-count"><span id="commentCount">0</span> / 1000</div>
+      </section>
+
+      <section class="submit-section">
+        <div id="formMessage" class="form-message" role="alert" aria-live="polite"></div>
+        <button type="submit" id="submitButton">
+          <span id="submitText">Submit Response</span>
+          <span id="submitSpinner" class="spinner hidden"></span>
+        </button>
+        <p class="privacy-note">Your response will be recorded for departmental routine planning.</p>
+      </section>
+    </form>
+
+    <footer><p>EEE Department · Faculty Routine Preference</p></footer>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
